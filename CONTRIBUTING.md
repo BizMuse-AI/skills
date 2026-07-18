@@ -17,3 +17,7 @@ npx skills add . --list
 ```
 
 New skills should solve a real, repeatable BizMuse workflow rather than duplicate general agent knowledge.
+
+## Commit Messages
+
+Use English Conventional Commits for every subject and body, for example: `docs(skill): clarify task polling behavior`.

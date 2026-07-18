@@ -1,0 +1,26 @@
+name: Skill bug
+description: Report incorrect or unsafe skill behavior
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: dropdown
+    id: skill
+    attributes:
+      label: Skill
+      options:
+        - bizmuse-music-video
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Redact API keys, private URLs, and user media.
+    validations:
+      required: true

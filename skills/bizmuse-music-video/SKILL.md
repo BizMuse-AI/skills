@@ -1,8 +1,8 @@
 ---
 name: bizmuse-music-video
-version: 1.0.0
+version: 1.1.0
 description: |
-  Create a complete BizMuse AI music video from local audio or a direct public audio URL and 1-7 reference images. Guides creative direction, submits the task through bizmuse-cli, polls safely, and returns video and cover URLs. Use when users ask to make an AI MV, music video, beat-synced video, 歌曲 MV, 卡点视频, or 音乐视频.
+  Create one or a directory batch of complete BizMuse AI music videos from local audio or direct public audio URLs and 1-7 reference images. Guides creative direction, submits tasks through bizmuse-cli, polls safely, and returns or downloads video and cover results. Use when users ask to make an AI MV, music video, beat-synced video, batch MV, 歌曲 MV, 批量 MV, 卡点视频, or 音乐视频.
 allowed-tools:
   - Bash(command -v bizmuse)
   - Bash(bizmuse *)
@@ -73,6 +73,28 @@ For multi-image examples, repeat values after `--image`:
 bizmuse mv run --audio song.mp3 --image face.jpg wardrobe.jpg stage.jpg --prompt "live performance" --json
 ```
 
+## Batch Workflow
+
+Use batch only when the user supplies a directory of separate audio files and wants the same creative direction and reference images applied to each one. Confirm the directory, output directory, shared references, and concurrency (`1-5`) before submitting:
+
+```bash
+bizmuse mv batch \
+  --dir "./songs" \
+  --image "artist.jpg" "stage.jpg" \
+  --prompt "live performance, cinematic camera movement" \
+  --concurrency 2 \
+  --output "./bizmuse-output" \
+  --json
+```
+
+Return the saved manifest path and summarize submitted versus failed entries. Do not claim that a submitted task has finished; inspect individual task IDs before reporting final media.
+
+When the user explicitly wants local files, download a successful result without buffering the video in the Agent conversation:
+
+```bash
+bizmuse task result <task-id> --download "./bizmuse-output" --json
+```
+
 ## Result
 
 Return a compact summary in the user's language:
@@ -82,5 +104,6 @@ Return a compact summary in the user's language:
 - Video URL
 - Cover URL
 - Any provider error that still needs action
+- Manifest path and per-file submission failures for a batch
 
 Use [references/prompts.md](references/prompts.md) when the user needs creative direction, [references/models.md](references/models.md) for supported controls, and [references/errors.md](references/errors.md) when a command fails.

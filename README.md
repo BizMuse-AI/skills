@@ -18,7 +18,7 @@ Official skills from [BizMuse AI](https://bizmuse.ai), designed for Claude Code,
 
 | Skill | What it does | Requires |
 |---|---|---|
-| [bizmuse-music-video](skills/bizmuse-music-video/) | Turns local audio or a direct public audio URL plus 1-7 reference images into a tracked AI music video task | `bizmuse-cli` and a BizMuse API key |
+| [bizmuse-music-video](skills/bizmuse-music-video/) | Creates one or a directory batch of tracked AI music videos and can download completed results | `bizmuse-cli` and a BizMuse API key |
 
 ## Install
 

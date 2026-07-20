@@ -9,14 +9,14 @@
 <p align="center">
   <a href="https://bizmuse.ai"><img src="https://img.shields.io/badge/product-bizmuse.ai-111111" alt="BizMuse AI"></a>
   <a href="https://bizmuse.ai/skill"><img src="https://img.shields.io/badge/docs-agent_skill-22c55e" alt="Agent Skill documentation"></a>
-  <a href="https://skills.sh/BizMuse-AI/skills"><img src="https://skills.sh/b/BizMuse-AI/skills" alt="skills.sh installs"></a>
+  <a href="https://www.skills.sh/bizmuse-ai/skills/bizmuse-music-video"><img src="https://skills.sh/b/BizMuse-AI/skills" alt="skills.sh installs"></a>
   <a href="https://github.com/BizMuse-AI/skills/actions/workflows/validate.yml"><img src="https://github.com/BizMuse-AI/skills/actions/workflows/validate.yml/badge.svg" alt="Validation"></a>
   <img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License">
 </p>
 
 Official skills from [BizMuse AI](https://bizmuse.ai), designed for OpenClaw, Claude Code, Cursor, Codex, Windsurf, and other agents that support the open `SKILL.md` format.
 
-The repository is the source of truth for every skill. The same versioned files are installable through [skills.sh](https://skills.sh/BizMuse-AI/skills) and published to [ClawHub](https://clawhub.ai/bizmuse-ai/skills/bizmuse-music-video).
+The repository is the source of truth for every skill. The same versioned files are installable through [skills.sh](https://www.skills.sh/bizmuse-ai/skills/bizmuse-music-video) and published to [ClawHub](https://clawhub.ai/bizmuse-ai/skills/bizmuse-music-video).
 
 - **ClawHub catalog:** `Creative`, `Productivity`
 - **Topics:** `music-video`, `ai-video`, `video-generation`
@@ -124,7 +124,7 @@ Each skill lives under `skills/<name>/` and owns its instructions, references, s
 
 - [BizMuse AI](https://bizmuse.ai)
 - [Agent Skill documentation](https://bizmuse.ai/skill)
-- [skills.sh catalog](https://skills.sh/BizMuse-AI/skills)
+- [skills.sh catalog](https://www.skills.sh/bizmuse-ai/skills/bizmuse-music-video)
 - [CLI documentation](https://bizmuse.ai/cli)
 - [MCP documentation](https://bizmuse.ai/mcp)
 - [ClawHub listing](https://clawhub.ai/bizmuse-ai/skills/bizmuse-music-video)

@@ -113,7 +113,7 @@ node scripts/publish-clawhub.mjs bizmuse-music-video \
   --changelog "Describe the user-visible changes"
 ```
 
-The publisher reads the version from source, performs a dry run first, and never accepts a token as a command-line argument. Authenticate separately with the official ClawHub CLI.
+The publisher reads the version from `SKILL.md`, reads owner, catalog, and source metadata from `clawhub.json`, requires a clean Git commit, and performs a dry run first. It never accepts a token as a command-line argument; authenticate separately with the official ClawHub CLI.
 
 ## Contributing
 

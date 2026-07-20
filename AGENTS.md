@@ -6,7 +6,7 @@ BizMuse AI 的开放 Agent 工作流目录，以 `skills/<slug>/SKILL.md` 为发
 <directory>
 .github/ - 公开协作模板与 Skill 校验工作流
 assets/ - 仓库级 BizMuse 品牌资源
-scripts/ - 不依赖私有服务的结构校验与 ClawHub 源码发布工具
+scripts/ - 不依赖私有服务的结构校验与 ClawHub owner/catalog/provenance 源码发布工具
 skills/ - 可独立安装的 Agent Skills，每个子目录拥有自己的版本和资源
 </directory>
 

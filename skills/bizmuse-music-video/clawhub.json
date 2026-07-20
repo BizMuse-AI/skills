@@ -1,0 +1,9 @@
+{
+  "owner": "bizmuse-ai",
+  "slug": "bizmuse-music-video",
+  "displayName": "BizMuse Music Video",
+  "categories": ["creative", "productivity"],
+  "topics": ["music-video", "ai-video", "video-generation"],
+  "sourceRepo": "BizMuse-AI/skills",
+  "sourceRef": "main"
+}

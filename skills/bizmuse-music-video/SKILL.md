@@ -1,6 +1,6 @@
 ---
 name: bizmuse-music-video
-version: 1.1.2
+version: 1.1.3
 description: Create complete AI music videos from local audio or public audio URLs with 1-7 reference images. Use for single-track or batch music video production, creative direction, task monitoring, and result downloads through the official BizMuse CLI.
 allowed-tools:
   - Bash(command -v bizmuse)

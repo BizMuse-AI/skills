@@ -12,6 +12,7 @@ skills/ - 可独立安装的 Agent Skills，每个子目录拥有自己的版本
 
 <config>
 README.md - 品牌首页、技能目录、安装矩阵与产品入口
+skills.sh.json - skills.sh 仓库页分组配置，将正式工作流归入 BizMuse Music Video 产品组
 CONTRIBUTING.md - 新增或更新 Skill 的质量门槛
 SECURITY.md - 私密漏洞报告与凭据边界
 LICENSE - MIT 开源许可证

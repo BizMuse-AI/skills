@@ -1,0 +1,13 @@
+{
+  "$schema": "https://skills.sh/schemas/skills.sh.schema.json",
+  "notGrouped": "bottom",
+  "groupings": [
+    {
+      "title": "Music Video",
+      "description": "Official BizMuse workflows for complete AI music video production.",
+      "skills": [
+        "bizmuse-music-video"
+      ]
+    }
+  ]
+}

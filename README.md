@@ -4,7 +4,7 @@
 
 <h1 align="center">BizMuse Skills</h1>
 
-<p align="center">Open workflows for creating music and music videos with AI agents.</p>
+<p align="center">Official agent workflows for creating complete AI music videos with BizMuse.</p>
 
 <p align="center">
   <a href="https://bizmuse.ai"><img src="https://img.shields.io/badge/product-bizmuse.ai-111111" alt="BizMuse AI"></a>
@@ -12,17 +12,30 @@
   <img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License">
 </p>
 
-Official skills from [BizMuse AI](https://bizmuse.ai), designed for Claude Code, Cursor, Codex, Windsurf, and other agents that support the open `SKILL.md` format.
+Official skills from [BizMuse AI](https://bizmuse.ai), designed for OpenClaw, Claude Code, Cursor, Codex, Windsurf, and other agents that support the open `SKILL.md` format.
+
+The repository is the source of truth for every skill. Public catalog releases are generated from the same versioned files and published to [ClawHub](https://clawhub.ai/bizmuse-ai/skills/bizmuse-music-video).
+
+- **ClawHub catalog:** `Creative`, `Productivity`
+- **Topics:** `music-video`, `ai-video`, `video-generation`
 
 ## Available Skills
 
 | Skill | What it does | Requires |
 |---|---|---|
-| [bizmuse-music-video](skills/bizmuse-music-video/) | Creates one or a directory batch of tracked AI music videos and can download completed results | `bizmuse-cli` and a BizMuse API key |
+| [bizmuse-music-video](skills/bizmuse-music-video/) | Creates single-track or batch AI music videos, monitors generation tasks, and downloads completed video and cover files | `bizmuse-cli`, a BizMuse API key, and generation credits |
 
 ## Install
 
-Install one skill:
+### OpenClaw and ClawHub
+
+```bash
+openclaw skills install @bizmuse-ai/bizmuse-music-video
+```
+
+### Compatible Agent Runtimes
+
+Install the skill directly from GitHub:
 
 ```bash
 npx skills add BizMuse-AI/skills --skill bizmuse-music-video
@@ -49,12 +62,57 @@ bizmuse auth set-api-key <key>
 
 Create a key at [bizmuse.ai/settings/apikeys](https://bizmuse.ai/settings/apikeys).
 
+## What The Skill Supports
+
+- Local MP3, WAV, M4A, or AAC audio, or a direct public audio URL.
+- One to seven local or public JPG, JPEG, PNG, or WebP reference images.
+- Vertical (`9:16`), landscape (`16:9`), and square (`1:1`) delivery.
+- `540p`, `720p`, and `1080p` output.
+- Storytelling, singing, dancing, and abstract creative modes.
+- Single-track generation and bounded-concurrency directory batches.
+- Explicit task monitoring and optional video and cover downloads.
+
+The skill intentionally exposes only the BizMuse `one-click-ai-mv` workflow. It does not claim unrelated models or capabilities that are not available through the published CLI.
+
+## Example
+
+```bash
+bizmuse mv run \
+  --audio "song.mp3" \
+  --image "artist.jpg" "stage.jpg" \
+  --prompt "Night performance in Tokyo with neon reflections and cinematic camera movement" \
+  --ratio 9:16 \
+  --resolution 720p \
+  --content-mode storytelling \
+  --json
+```
+
+Generation is asynchronous. Keep the returned task ID, check its status, and request the result only after the task succeeds.
+
 ## Principles
 
 - **Truthful contracts:** skills describe only capabilities available in the current CLI and API.
 - **Secrets stay local:** agents never ask users to paste API keys into chat.
 - **Progress is explicit:** asynchronous generation returns a task ID before it returns media.
 - **Portable by default:** instructions use the open skill format rather than one agent's private extension.
+
+## Release Process
+
+Validate the repository before publishing:
+
+```bash
+node scripts/validate-skills.mjs
+npx --yes skills add . --list
+```
+
+Publish a ClawHub release from the version declared in `SKILL.md`:
+
+```bash
+node scripts/publish-clawhub.mjs bizmuse-music-video \
+  --changelog "Describe the user-visible changes"
+```
+
+The publisher reads the version from source, performs a dry run first, and never accepts a token as a command-line argument. Authenticate separately with the official ClawHub CLI.
 
 ## Contributing
 
@@ -63,6 +121,7 @@ Each skill lives under `skills/<name>/` and owns its instructions, references, s
 ## Links
 
 - [BizMuse AI](https://bizmuse.ai)
+- [ClawHub listing](https://clawhub.ai/bizmuse-ai/skills/bizmuse-music-video)
 - [Agent tools](https://bizmuse.ai/mcp)
 - [CLI package](https://www.npmjs.com/package/bizmuse-cli)
 - [MCP package](https://www.npmjs.com/package/bizmuse-mcp)

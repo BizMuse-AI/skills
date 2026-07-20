@@ -1,39 +1,45 @@
-# Available AI Models
+# Supported Model and Controls
 
-## Music Video Models
+## Model Scope
 
-| Model | Provider | Best For | Credits |
-|-------|----------|----------|---------|
-| one-click-ai-mv | Vidu | Complete MV with beat sync | 60-180 |
-| kie-veo4 | Kie | High-quality cinematic | 120-240 |
-| kie-kling-3.0 | Kie | Fast cuts, motion | 90-180 |
-| kie-seedance-2 | Kie | Dance, performance | 90-180 |
+This skill exposes one music video workflow:
 
-## Parameters
+| Model | Provider | Capability |
+|---|---|---|
+| `one-click-ai-mv` | Vidu | Complete music video generation from audio, reference images, and creative direction |
 
-### aspect_ratio
-- `9:16` — TikTok, Reels, Shorts (vertical)
-- `16:9` — YouTube (landscape)
-- `1:1` — Instagram (square)
-- `4:3` — Classic TV
-- `3:4` — Portrait
+Do not substitute or advertise unrelated BizMuse image, video, music, or third-party models.
 
-### resolution
-- `720` — HD (faster, fewer credits)
-- `1080` — Full HD (slower, more credits)
+## CLI Controls
 
-### duration_seconds
-- `30-60` — Recommended for reliability
-- `90+` — May fail, split into segments
+### Aspect Ratio
 
-## Character Consistency
+- `9:16`: Vertical delivery for TikTok, Reels, and Shorts.
+- `16:9`: Landscape delivery for YouTube and widescreen playback.
+- `1:1`: Square delivery for social feeds.
 
-Upload 1-2 reference images to maintain:
-- Same face throughout video
-- Consistent style/color grading
-- Brand/artist identity
+### Resolution
 
-Best results:
-- Well-lit, front-facing photos
-- No sunglasses or masks
-- Same person in different poses for storytelling
+- `540p`: Fastest and lowest-cost preview option.
+- `720p`: Recommended default for general delivery.
+- `1080p`: Highest exposed resolution with increased processing cost.
+
+### Content Mode
+
+- `storytelling`: Narrative scenes and visual progression.
+- `singing`: Performance direction centered on the vocalist.
+- `dancing`: Movement and choreography-driven direction.
+- `abstract`: Non-literal, graphic, or atmospheric interpretation.
+
+### Reference Images
+
+Provide 1-7 reference images. Clear, well-lit images improve the available visual guidance, but the service does not guarantee exact identity, wardrobe, or scene consistency.
+
+## Source Limits
+
+- Audio duration: 10-180 seconds.
+- Local audio upload: up to 20 MB.
+- Local reference image upload: up to 50 MB per image.
+- Prompt length: up to 3,000 characters.
+
+Pricing depends on source duration and selected output settings. Direct users to `https://bizmuse.ai/pricing` for current account pricing rather than quoting a fixed credit amount.

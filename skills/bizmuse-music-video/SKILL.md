@@ -1,109 +1,173 @@
 ---
 name: bizmuse-music-video
-version: 1.1.0
-description: |
-  Create one or a directory batch of complete BizMuse AI music videos from local audio or direct public audio URLs and 1-7 reference images. Guides creative direction, submits tasks through bizmuse-cli, polls safely, and returns or downloads video and cover results. Use when users ask to make an AI MV, music video, beat-synced video, batch MV, 歌曲 MV, 批量 MV, 卡点视频, or 音乐视频.
+version: 1.1.2
+description: Create complete AI music videos from local audio or public audio URLs with 1-7 reference images. Use for single-track or batch music video production, creative direction, task monitoring, and result downloads through the official BizMuse CLI.
 allowed-tools:
   - Bash(command -v bizmuse)
   - Bash(bizmuse *)
   - Bash(npm install -g bizmuse-cli)
+metadata:
+  openclaw:
+    requires:
+      bins:
+        - bizmuse
+    install:
+      - kind: node
+        package: bizmuse-cli
+        bins:
+          - bizmuse
+    homepage: https://bizmuse.ai/skill
 ---
 
 # BizMuse Music Video
 
-Turn a finished song and visual references into a complete AI music video through [BizMuse](https://bizmuse.ai). Keep the user focused on creative direction while the skill handles upload, submission, and task tracking.
+Create a complete AI music video from a finished song and visual references through [BizMuse AI](https://bizmuse.ai). This skill keeps the user focused on creative direction while the official BizMuse CLI handles uploads, generation, task monitoring, and result delivery.
 
-## Safety Rules
+## Capabilities
 
-- Never ask the user to paste an API key into chat. Direct them to configure it locally.
-- Never claim a platform page URL is a direct audio URL. Suno, YouTube, Udio, and SoundCloud pages must first be exported or downloaded as audio.
-- Never claim generation succeeded until `bizmuse task result` returns video data.
-- Do not log, repeat, or store credentials in project files.
+- Create one complete music video from a local audio file or direct public audio URL.
+- Use 1-7 reference images to guide subject identity, wardrobe, setting, and visual style.
+- Choose a vertical, landscape, or square delivery format.
+- Select storytelling, singing, dancing, or abstract content direction.
+- Submit a directory of audio files as a bounded-concurrency batch.
+- Monitor asynchronous generation tasks and download completed video and cover files.
 
-## Prerequisites
+This skill only uses the BizMuse `one-click-ai-mv` workflow. It does not advertise unrelated image, video, music, or third-party model capabilities.
 
-Check the CLI:
+## Requirements
 
-```bash
-command -v bizmuse
-```
+- Node.js 18 or newer.
+- The `bizmuse-cli` package installed as the `bizmuse` command.
+- A BizMuse account, API key, and sufficient generation credits.
+- One supported audio source and 1-7 supported reference images.
 
-If missing, ask permission before installing it:
+Install the CLI when it is not already available:
 
 ```bash
 npm install -g bizmuse-cli
 ```
 
-If authentication is missing, direct the user to create a key at [bizmuse.ai/settings/apikeys](https://bizmuse.ai/settings/apikeys) and configure it in their own terminal:
+Create an API key at [bizmuse.ai/settings/apikeys](https://bizmuse.ai/settings/apikeys), then configure it in the user's own terminal:
 
 ```bash
 bizmuse auth set-api-key <key>
 ```
 
-See [references/setup.md](references/setup.md) for supported inputs and authentication recovery.
+Never ask the user to paste an API key into chat. Never print, repeat, or store credentials in project files.
 
-## Workflow
+## Supported Inputs
 
-1. Collect one local audio path or direct public audio URL.
-2. Collect 1-7 local image paths or direct public image URLs.
-3. Ask for creative direction: subject, setting, era, motion, palette, and mood.
-4. Confirm aspect ratio: `9:16`, `16:9`, or `1:1`.
-5. Submit with JSON output and retain the returned task ID.
-6. Poll status every 30 seconds. Stop after 30 minutes and return the task ID if it is still running.
-7. Fetch the result only after status is `success`; return the video URL, cover URL, and task ID.
+### Audio
+
+- Local `.mp3`, `.wav`, `.m4a`, or `.aac` file.
+- Direct public HTTP or HTTPS audio URL.
+- Duration from 10 to 180 seconds.
+- Maximum local upload size of 20 MB.
+
+Suno, YouTube, Udio, SoundCloud, and similar platform page URLs are not direct audio URLs. Ask the user to export or download the audio first.
+
+### Reference Images
+
+- 1-7 local `.jpg`, `.jpeg`, `.png`, or `.webp` files.
+- Direct public HTTP or HTTPS image URLs.
+- Maximum local upload size of 50 MB per image.
+
+Use clear, well-lit references when subject consistency matters. Do not claim guaranteed face, wardrobe, or scene consistency.
+
+## Creative Intake
+
+Before submitting, confirm:
+
+1. Audio source.
+2. Reference image sources.
+3. Subject and setting.
+4. Visual era, palette, lighting, and camera language.
+5. Aspect ratio: `9:16`, `16:9`, or `1:1`.
+6. Resolution: `540p`, `720p`, or `1080p`.
+7. Content mode: `storytelling`, `singing`, `dancing`, or `abstract`.
+
+Use [references/prompts.md](references/prompts.md) when the user needs help developing a coherent visual direction.
+
+## Single Music Video Workflow
+
+Submit one music video with machine-readable output:
 
 ```bash
 bizmuse mv run \
   --audio "song.mp3" \
-  --image "artist.jpg" \
-  --prompt "1980s Tokyo nightlife, neon reflections, cinematic movement" \
+  --image "artist.jpg" "stage.jpg" \
+  --prompt "Night performance in Tokyo, neon reflections, cinematic camera movement" \
   --ratio 9:16 \
   --resolution 720p \
+  --content-mode storytelling \
   --json
 ```
+
+Retain the returned task ID. A submitted task is not a completed video.
+
+Check progress no more frequently than every 30 seconds:
 
 ```bash
 bizmuse task status <task-id> --json
+```
+
+Only request the final result after the task reports success:
+
+```bash
 bizmuse task result <task-id> --json
 ```
 
-For multi-image examples, repeat values after `--image`:
-
-```bash
-bizmuse mv run --audio song.mp3 --image face.jpg wardrobe.jpg stage.jpg --prompt "live performance" --json
-```
-
-## Batch Workflow
-
-Use batch only when the user supplies a directory of separate audio files and wants the same creative direction and reference images applied to each one. Confirm the directory, output directory, shared references, and concurrency (`1-5`) before submitting:
-
-```bash
-bizmuse mv batch \
-  --dir "./songs" \
-  --image "artist.jpg" "stage.jpg" \
-  --prompt "live performance, cinematic camera movement" \
-  --concurrency 2 \
-  --output "./bizmuse-output" \
-  --json
-```
-
-Return the saved manifest path and summarize submitted versus failed entries. Do not claim that a submitted task has finished; inspect individual task IDs before reporting final media.
-
-When the user explicitly wants local files, download a successful result without buffering the video in the Agent conversation:
+When the user requests local files, stream the completed video and optional cover to a directory:
 
 ```bash
 bizmuse task result <task-id> --download "./bizmuse-output" --json
 ```
 
-## Result
+## Batch Workflow
 
-Return a compact summary in the user's language:
+Use batch mode only when the user provides a directory of separate audio files and wants the same references and creative direction applied to each file.
 
-- Task ID
-- Final status
-- Video URL
-- Cover URL
-- Any provider error that still needs action
-- Manifest path and per-file submission failures for a batch
+```bash
+bizmuse mv batch \
+  --dir "./songs" \
+  --image "artist.jpg" "stage.jpg" \
+  --prompt "Live performance with cinematic lighting and energetic camera movement" \
+  --ratio 16:9 \
+  --resolution 720p \
+  --content-mode singing \
+  --concurrency 2 \
+  --output "./bizmuse-output" \
+  --json
+```
 
-Use [references/prompts.md](references/prompts.md) when the user needs creative direction, [references/models.md](references/models.md) for supported controls, and [references/errors.md](references/errors.md) when a command fails.
+Concurrency must be between 1 and 5. Return the manifest path, submitted task IDs, and any per-file failures. Inspect each task independently before reporting completed media.
+
+## Result Contract
+
+Return a concise result in the user's preferred language:
+
+- Task ID.
+- Current or final status.
+- Video URL when available.
+- Cover URL when available.
+- Download paths when requested.
+- Batch manifest path and per-file failures when applicable.
+- Actionable provider or account error without exposing credentials.
+
+If a task is still running after 30 minutes, stop polling and return the task ID with a command the user can run later. Never invent a successful result or media URL.
+
+## Cost and Privacy
+
+BizMuse is an external paid service. Generation consumes account credits based on the selected output and source duration; current plans are listed at [bizmuse.ai/pricing](https://bizmuse.ai/pricing).
+
+Audio, reference images, prompts, and generated media are sent to BizMuse to perform the requested generation. Confirm the user has the right to upload and process all supplied media. Do not upload unrelated files or private material that is not required for the requested video.
+
+## Troubleshooting
+
+- Read [references/setup.md](references/setup.md) for installation, authentication, and input requirements.
+- Read [references/models.md](references/models.md) for the exact model and CLI controls exposed by this skill.
+- Read [references/errors.md](references/errors.md) before retrying failed authentication, billing, upload, or provider operations.
+
+- Product: [bizmuse.ai](https://bizmuse.ai)
+- Documentation: [bizmuse.ai/skill](https://bizmuse.ai/skill)
+- Source: [github.com/BizMuse-AI/skills](https://github.com/BizMuse-AI/skills)

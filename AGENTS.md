@@ -1,12 +1,12 @@
 # BizMuse Skills
 > L1 | 独立公开仓库: https://github.com/BizMuse-AI/skills
 
-BizMuse AI 的开放 Agent 工作流目录，以 `skills/<slug>/SKILL.md` 为发现与行为契约，GitHub 是安装和版本真相源。
+BizMuse AI 的开放 Agent 工作流目录，以 `skills/<slug>/SKILL.md` 为发现与行为契约；GitHub 是源码和版本真相源，ClawHub 是经过文本文件过滤的公开分发镜像。
 
 <directory>
 .github/ - 公开协作模板与 Skill 校验工作流
 assets/ - 仓库级 BizMuse 品牌资源
-scripts/ - 不依赖私有服务的结构校验工具
+scripts/ - 不依赖私有服务的结构校验与 ClawHub 源码发布工具
 skills/ - 可独立安装的 Agent Skills，每个子目录拥有自己的版本和资源
 </directory>
 

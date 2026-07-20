@@ -1,49 +1,46 @@
-# Music Video Prompt Templates
+# Music Video Prompt Guide
 
-## Structure
+## Recommended Structure
 
-```
-[Era] + [Setting] + [Visual Style] + [Color/Mood] + [Technical Details]
+Build one coherent direction from:
+
+```text
+[subject] + [setting] + [era or genre] + [camera language] + [lighting and palette] + [mood]
 ```
 
 ## Examples
 
-### Cyberpunk
-```
-1980s Tokyo nightlife, synthwave aesthetic, neon-lit alleyways with vending machines, purple and cyan color grading, cinematic wide shots, light rain reflections, nostalgic cyberpunk mood
+### Neon Performance
+
+```text
+Solo artist performing in a rain-soaked Tokyo alley at night, 1980s synthwave styling, cinematic tracking shots and intimate close-ups, purple and cyan neon reflections, energetic but nostalgic mood
 ```
 
-### Punk Rock
-```
-1970s New York punk scene, 16mm film grain, neon-lit underground clubs, cherry-red color motifs, intimate close-ups, high contrast shadows, raw emotional intensity
+### Live Rock Session
+
+```text
+Four-piece band in a compact underground club, late-1970s punk styling, handheld 16mm camera movement, hard red practical lights and deep shadows, raw and immediate performance energy
 ```
 
-### Dream Pop
-```
-ethereal coastal cliffs at golden hour, soft focus, pastel pink and lavender tones, flowing fabric in wind, dreamy atmosphere, anamorphic lens flare, slow motion
-```
+### Dream Pop Story
 
-### Hip Hop
-```
-urban rooftop at dusk, city skyline bokeh, golden hour lighting, confident poses, gritty texture, saturated colors, dynamic camera movements
+```text
+Singer walking along coastal cliffs at golden hour, ethereal contemporary styling, slow dolly movement and wide landscape shots, pastel pink and lavender palette, reflective and weightless mood
 ```
 
-### Electronic
+### Dance Video
+
+```text
+Lead dancer and small ensemble in an industrial warehouse, futuristic streetwear, dynamic orbiting camera and rhythmic cuts, white laser beams through light fog, precise and high-energy mood
 ```
-industrial warehouse, laser light beams, fog machines, silhouette dancing, strobe effects, high contrast, futuristic minimalism
-```
 
-## Tips
+## Prompt Rules
 
-1. **Be specific** — "neon-lit alleyways" beats "city at night"
-2. **Reference era** — helps AI pick the right visual language
-3. **Name the technique** — "16mm film grain", "anamorphic lens flare"
-4. **Color palette** — "purple and cyan", "muted reds and blacks"
-5. **One mood per video** — don't mix "happy" and "melancholy"
+1. Name a clear subject and setting.
+2. Use one visual era or genre as the primary reference.
+3. Describe camera movement instead of using vague quality adjectives.
+4. Choose a compact lighting and color palette.
+5. Keep the emotional direction internally consistent.
+6. Describe visual goals, not copyrighted shots to reproduce exactly.
 
-## What NOT to do
-
-- ❌ "Make it good" — too vague
-- ❌ "Like that one video" — AI doesn't know references
-- ❌ "Fast and slow and happy and sad" — contradictory
-- ❌ "Photorealistic anime watercolor oil painting" — conflicting styles
+Avoid vague prompts such as `make it cinematic`. Avoid contradictory combinations such as `fast and slow`, `happy and tragic`, or several incompatible art styles in one direction.

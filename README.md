@@ -8,6 +8,7 @@
 
 <p align="center">
   <a href="https://bizmuse.ai"><img src="https://img.shields.io/badge/product-bizmuse.ai-111111" alt="BizMuse AI"></a>
+  <a href="https://bizmuse.ai/skill"><img src="https://img.shields.io/badge/docs-agent_skill-22c55e" alt="Agent Skill documentation"></a>
   <a href="https://github.com/BizMuse-AI/skills/actions/workflows/validate.yml"><img src="https://github.com/BizMuse-AI/skills/actions/workflows/validate.yml/badge.svg" alt="Validation"></a>
   <img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License">
 </p>
@@ -121,8 +122,11 @@ Each skill lives under `skills/<name>/` and owns its instructions, references, s
 ## Links
 
 - [BizMuse AI](https://bizmuse.ai)
+- [Agent Skill documentation](https://bizmuse.ai/skill)
+- [CLI documentation](https://bizmuse.ai/cli)
+- [MCP documentation](https://bizmuse.ai/mcp)
 - [ClawHub listing](https://clawhub.ai/bizmuse-ai/skills/bizmuse-music-video)
-- [Agent tools](https://bizmuse.ai/mcp)
+- [Source code](https://github.com/BizMuse-AI/skills)
 - [CLI package](https://www.npmjs.com/package/bizmuse-cli)
 - [MCP package](https://www.npmjs.com/package/bizmuse-mcp)
 
